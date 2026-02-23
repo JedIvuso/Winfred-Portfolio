@@ -1,6 +1,9 @@
-# Joy Moraa — Portfolio Website
+# Winfred-Portfolio
+
+Full-stack portfolio website for a Business Operations Consultant — built with Angular, NestJS, and PostgreSQL, featuring a content management admin panel.
 
 A full-stack portfolio website with:
+
 - **NestJS Backend** — REST API with SQLite database (auto-seeded with default data)
 - **Angular Frontend** (port 4200) — The public-facing portfolio website
 - **Angular Admin Panel** (port 4201) — CMS to manage all content without touching code
@@ -10,7 +13,8 @@ A full-stack portfolio website with:
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js v18+ 
+
+- Node.js v18+
 - npm v9+
 
 ---
@@ -25,7 +29,7 @@ npm run start:dev
 
 API will run at **http://localhost:3000/api**
 
-The database (`joy-moraa.db`) is auto-created with default data on first run.
+The database (`portfolio.db`) is auto-created with default data on first run.
 
 ---
 
@@ -56,7 +60,7 @@ Admin panel will be at **http://localhost:4201**
 ## 📁 Project Structure
 
 ```
-joy-moraa/
+winfred-mwikali/
 ├── backend/                  # NestJS API
 │   ├── src/
 │   │   ├── testimonials/     # Testimonials CRUD
@@ -99,25 +103,25 @@ joy-moraa/
 
 ## 🔌 API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /api/profile | Get profile data |
-| PUT | /api/profile | Update profile |
-| GET | /api/testimonials | Get visible testimonials |
-| GET | /api/testimonials/admin | Get all testimonials |
-| POST | /api/testimonials | Create testimonial |
-| PUT | /api/testimonials/:id | Update testimonial |
-| DELETE | /api/testimonials/:id | Delete testimonial |
-| GET | /api/services | Get visible services |
-| GET | /api/services/admin | Get all services |
-| POST | /api/services | Create service |
-| PUT | /api/services/:id | Update service |
-| DELETE | /api/services/:id | Delete service |
-| GET | /api/tools | Get visible tools |
-| GET | /api/tools/admin | Get all tools |
-| POST | /api/tools | Create tool |
-| PUT | /api/tools/:id | Update tool |
-| DELETE | /api/tools/:id | Delete tool |
+| Method | Endpoint                | Description              |
+| ------ | ----------------------- | ------------------------ |
+| GET    | /api/profile            | Get profile data         |
+| PUT    | /api/profile            | Update profile           |
+| GET    | /api/testimonials       | Get visible testimonials |
+| GET    | /api/testimonials/admin | Get all testimonials     |
+| POST   | /api/testimonials       | Create testimonial       |
+| PUT    | /api/testimonials/:id   | Update testimonial       |
+| DELETE | /api/testimonials/:id   | Delete testimonial       |
+| GET    | /api/services           | Get visible services     |
+| GET    | /api/services/admin     | Get all services         |
+| POST   | /api/services           | Create service           |
+| PUT    | /api/services/:id       | Update service           |
+| DELETE | /api/services/:id       | Delete service           |
+| GET    | /api/tools              | Get visible tools        |
+| GET    | /api/tools/admin        | Get all tools            |
+| POST   | /api/tools              | Create tool              |
+| PUT    | /api/tools/:id          | Update tool              |
+| DELETE | /api/tools/:id          | Delete tool              |
 
 ---
 
@@ -126,10 +130,10 @@ joy-moraa/
 In `frontend/src/app/components/hero/hero.component.ts`, replace the `.image-placeholder` div with:
 
 ```html
-<img src="assets/joy-moraa.jpg" alt="Joy Moraa" />
+<img src="assets/winfred-mwikali.jpg" alt="Winfred Mwikali" />
 ```
 
-Add your photo to `frontend/src/assets/joy-moraa.jpg`.
+Add your photo to `frontend/src/assets/winfred-mwikali.jpg`.
 
 Similarly update the about section in `about.component.ts`.
 
@@ -147,7 +151,7 @@ The admin panel currently has no authentication. To add basic protection:
 
 ## 🗃️ Database
 
-Uses **SQLite** for simplicity — no database setup required! The file `joy-moraa.db` is created automatically in the backend folder.
+Uses **SQLite** for simplicity — no database setup required! The file `portfolio.db` is created automatically in the backend folder.
 
 To switch to PostgreSQL/MySQL, update `backend/src/app.module.ts`:
 
@@ -158,7 +162,7 @@ TypeOrmModule.forRoot({
   port: 5432,
   username: 'your_user',
   password: 'your_password',
-  database: 'joy_moraa',
+  database: 'portfolio',
   entities: [...],
   synchronize: true,
 })
@@ -169,12 +173,14 @@ TypeOrmModule.forRoot({
 ## 🌐 Deployment
 
 ### Backend: Deploy to Railway, Render, or any Node.js host
+
 ```bash
 npm run build
 npm run start:prod
 ```
 
 ### Frontend & Admin: Deploy to Vercel, Netlify, or Firebase Hosting
+
 ```bash
 npm run build
 # Upload the dist/ folder
