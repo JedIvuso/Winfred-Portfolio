@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Winfred Mwikali Portfolio Backend API",
   "scripts": {
+    "prebuild": "mkdir -p dist",
     "build": "nest build",
     "start": "nest start",
     "start:dev": "nest start --watch",
