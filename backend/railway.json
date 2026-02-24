@@ -1,9 +1,11 @@
 {
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "npm install && npm run build"
+    "buildCommand": "npm install && mkdir -p dist && npm run build"
   },
   "deploy": {
-    "startCommand": "npm run start:prod"
+    "startCommand": "npm run start:prod",
+    "healthcheckPath": "/",
+    "healthcheckTimeout": 100
   }
 }
