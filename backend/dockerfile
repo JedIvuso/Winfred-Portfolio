@@ -2,7 +2,7 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-# Copy package files first (for better caching)
+# Copy package files
 COPY package*.json ./
 
 # Install dependencies
@@ -11,11 +11,11 @@ RUN npm install
 # Copy source code
 COPY . .
 
-# Create dist directory and build
-RUN mkdir -p dist && npm run build
+# Build the app
+RUN npm run build
 
 # Expose port
 EXPOSE 3000
 
-# Start command
-CMD ["npm", "run", "start:prod"]
+# Start the app
+CMD ["node", "dist/main"]

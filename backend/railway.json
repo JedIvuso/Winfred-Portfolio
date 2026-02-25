@@ -1,7 +1,7 @@
 {
   "build": {
-    "builder": "NIXPACKS",
-    "buildCommand": "npm install && mkdir -p dist && npm run build"
+    "builder": "DOCKERFILE",
+    "dockerfilePath": "Dockerfile"
   },
   "deploy": {
     "startCommand": "npm run start:prod",
