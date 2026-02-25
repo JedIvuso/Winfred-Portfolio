@@ -16,10 +16,12 @@ async function bootstrap() {
     origin: [
       "http://localhost:4200",
       "http://localhost:4201",
-      process.env.FRONTEND_URL || "https://your-frontend.railway.app",
-    ],
+      "https://winfred-portfolio-virid.vercel.app", // Your new frontend URL
+      process.env.FRONTEND_URL, // Keep this for flexibility
+    ].filter(Boolean), // Filter out any undefined values
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // Important if you're sending cookies/auth headers
   });
 
   // Serve uploaded images as static files at /uploads/filename
@@ -31,7 +33,7 @@ async function bootstrap() {
   // Use PORT from environment or default to 3000
   const port = process.env.PORT || 3000;
 
-  await app.listen(port, "0.0.0.0"); // Important: listen on all interfaces
+  await app.listen(port, "0.0.0.0");
   console.log(`🚀 Winfred Mwikali API running on port ${port}`);
   console.log(`🖼️  Uploads served at /uploads/`);
 }
