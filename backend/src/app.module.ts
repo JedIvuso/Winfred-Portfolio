@@ -8,21 +8,30 @@ import { Testimonial } from "./testimonials/testimonial.entity";
 import { Service } from "./services/service.entity";
 import { Profile } from "./profile/profile.entity";
 import { Tool } from "./tools/tool.entity";
+import { HealthController } from "./health/health.controller";
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: process.env.NODE_ENV === 'production' ? 'postgres' : 'sqlite',
-      url: process.env.NODE_ENV === 'production' ? process.env.DATABASE_URL : undefined,
-      database: process.env.NODE_ENV === 'production' ? undefined : 'portfolio.db',
+      type: process.env.NODE_ENV === "production" ? "postgres" : "sqlite",
+      url:
+        process.env.NODE_ENV === "production"
+          ? process.env.DATABASE_URL
+          : undefined,
+      database:
+        process.env.NODE_ENV === "production" ? undefined : "portfolio.db",
       entities: [Testimonial, Service, Profile, Tool],
       synchronize: true,
-      ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+      ssl:
+        process.env.NODE_ENV === "production"
+          ? { rejectUnauthorized: false }
+          : false,
     } as any),
     TestimonialsModule,
     ServicesModule,
     ProfileModule,
     ToolsModule,
   ],
+  controllers: [HealthController],
 })
 export class AppModule {}

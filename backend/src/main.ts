@@ -13,7 +13,11 @@ async function bootstrap() {
   if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
 
   app.enableCors({
-    origin: ["http://localhost:4200", "http://localhost:4201"],
+    origin: [
+      "http://localhost:4200",
+      "http://localhost:4201",
+      process.env.FRONTEND_URL || "https://your-frontend.railway.app",
+    ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
   });
@@ -24,8 +28,11 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.setGlobalPrefix("api");
 
-  await app.listen(3000);
-  console.log("🚀 Winfred Mwikali API running on http://localhost:3000/api");
-  console.log("🖼️  Uploads served at http://localhost:3000/uploads/");
+  // Use PORT from environment or default to 3000
+  const port = process.env.PORT || 3000;
+
+  await app.listen(port, "0.0.0.0"); // Important: listen on all interfaces
+  console.log(`🚀 Winfred Mwikali API running on port ${port}`);
+  console.log(`🖼️  Uploads served at /uploads/`);
 }
 bootstrap();
