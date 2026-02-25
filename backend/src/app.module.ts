@@ -9,6 +9,7 @@ import { Service } from "./services/service.entity";
 import { Profile } from "./profile/profile.entity";
 import { Tool } from "./tools/tool.entity";
 import { HealthController } from "./health/health.controller";
+import { AppController } from "./app.controller";
 
 @Module({
   imports: [
@@ -32,6 +33,6 @@ import { HealthController } from "./health/health.controller";
     ProfileModule,
     ToolsModule,
   ],
-  controllers: [HealthController],
+  controllers: [HealthController, AppController],
 })
 export class AppModule {}
