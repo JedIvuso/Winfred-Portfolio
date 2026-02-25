@@ -190,7 +190,8 @@ import { Profile } from "../../models";
 export class AboutComponent implements OnInit {
   profile: Profile | null = null;
   aboutImageUrl: string | null = null;
-  private apiBase = "http://localhost:3000";
+  // private apiBase = "http://localhost:3000";
+  private apiBase = "https://winfred-portfolio-production.up.railway.app/api";
 
   constructor(private api: ApiService) {}
 

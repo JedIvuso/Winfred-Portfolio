@@ -1,5 +1,7 @@
-import { Component, HostListener } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { ApiService } from "../../services/api.service";
+import { Profile } from "../../models";
 
 @Component({
   selector: "app-navbar",
@@ -8,7 +10,7 @@ import { CommonModule } from "@angular/common";
   template: `
     <nav [class.scrolled]="scrolled">
       <div class="nav-inner">
-        <a class="logo" href="#">Winfred Mwikali</a>
+        <a class="logo" href="#">{{ profile?.name || "Winfred Mwikali" }}</a>
         <div class="nav-links" [class.open]="menuOpen">
           <a href="#about" (click)="closeMenu()">About</a>
           <a href="#services" (click)="closeMenu()">Services</a>
@@ -146,9 +148,19 @@ import { CommonModule } from "@angular/common";
     `,
   ],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   scrolled = false;
   menuOpen = false;
+  profile: Profile | null = null;
+
+  constructor(private api: ApiService) {}
+
+  ngOnInit() {
+    this.api.getProfile().subscribe({
+      next: (p) => (this.profile = p),
+      error: () => {},
+    });
+  }
 
   @HostListener("window:scroll")
   onScroll() {

@@ -575,7 +575,7 @@ export class ProfilePageComponent implements OnInit {
   getImageUrl(path: string): string {
     if (!path) return "";
     if (path.startsWith("http")) return path;
-    return `http://localhost:3000${path}`;
+    return `https://winfred-portfolio-production.up.railway.app${path}`;
   }
 
   triggerInput(field: "hero" | "about") {
