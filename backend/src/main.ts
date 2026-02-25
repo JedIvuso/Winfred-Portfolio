@@ -16,7 +16,8 @@ async function bootstrap() {
     origin: [
       "http://localhost:4200",
       "http://localhost:4201",
-      "https://winfred-portfolio-virid.vercel.app", // Your new frontend URL
+      "https://winfred-portfolio-virid.vercel.app",
+      "https://winfred-portfolio-srt7.vercel.app",
       process.env.FRONTEND_URL, // Keep this for flexibility
     ].filter(Boolean), // Filter out any undefined values
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
